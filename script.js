@@ -332,12 +332,10 @@ function getRecommend(type, id) {
             console.log(output);
             for (let i = 0; i < 4; i++) {
                 console.log(output.results[i].poster_path);
-                recommend.innerHTML += `<img src="${output.results[i].poster_path}" /></a>`
                 let nameItem = output.results[i].name || output.results[i].title;
 
                 let poster = output.results[i].poster_path ? urlPoster + output.results[i].poster_path : 'https://kinomaiak.ru/wp-content/uploads/2018/02/noposter.png';
 
-                let releaseDate = (output.results[i].release_date || output.results[i].first_air_date).slice(0, 4);
                 let dataInfo = `data-id="${output.results[i].id}" data-type = "${output.results[i].media_type}"`;
 
                 recommend.innerHTML += `
