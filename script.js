@@ -156,8 +156,8 @@ function showFullInfo() {
                     </div>
                     ${(output.overview.length !== 0) ? `<div class="col-12"><p class="overview">${output.overview}</p></div>` : ``}
                     <div class="video col-12"></div> 
-                    <div class="recommend_list"></div> 
                 </div>
+                <div class="recommend_list row"></div> 
             `;
 
             moviePage.innerHTML += movieInfo;
