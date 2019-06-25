@@ -62,7 +62,7 @@ const apiSearch = event => {
             });
 
 
-            movie.innerHTML = inner;
+            movie.innerHTML = inner + backMain;
             moviePage.classList.remove('active');
             movie.classList.remove('hidden');
 
@@ -79,7 +79,7 @@ const apiSearch = event => {
 searchForm.addEventListener('submit', apiSearch);
 
 function addEventMedia() {
-    const media = movie.querySelectorAll('.movie_box[data-id]');
+    const media = document.querySelectorAll('.movie_box[data-id]');
     media.forEach(function (elem) {
         elem.style.cursor = 'pointer';
         elem.addEventListener('click', showFullInfo);
@@ -95,6 +95,7 @@ function showFullInfo() {
     } else {
         movie.innerHTML = backMain + '<p class="error">Упс, что-то пошло не так!</p>';
     }
+    console.log(url);
 
 
     fetch(url)
@@ -160,21 +161,22 @@ function showFullInfo() {
                 <div class="recommend_list row"></div> 
             `;
 
-            moviePage.innerHTML += movieInfo;
+            let backBtn = '<div id="to_back"></div>';
+
+            moviePage.innerHTML = movieInfo + backBtn;
             movie.classList = 'hidden row';
 
             getVideo(this.dataset.type, this.dataset.id);
             getRecommend(this.dataset.type, this.dataset.id);
 
-            const backBtn = document.querySelector('#to_back');
+            const backBtnClick = moviePage.querySelector('#to_back');
 
             function closePage() {
                 moviePage.classList.remove('active');
                 movie.classList.remove('hidden');
-                moviePage.innerHTML = '<div id="to_back"></div>';
             }
 
-            backBtn.addEventListener('click', closePage);
+            backBtnClick.addEventListener('click', closePage);
         })
 
         .catch(reason => {
@@ -293,7 +295,7 @@ document.addEventListener('DOMContentLoaded', function () {
     ;
 });
 
-function getVideo(type, id) {
+const getVideo = (type, id) => {
     let video = document.querySelector('.video');
 
     fetch(`https://api.themoviedb.org/3/${type}/${id}/videos?api_key=3ac9e9c4b5b41ada30de1c0b1e488050&language=ru`)
@@ -311,13 +313,13 @@ function getVideo(type, id) {
             }
         })
         .catch(reason => {
-            video.innerHTML = `Видео отсутствует!`;
+            video.innerHTML = ``;
             console.error('error: ' + reason.status);
         })
     ;
-}
+};
 
-function getRecommend(type, id) {
+const getRecommend = (type, id) => {
     let recommend = document.querySelector('.recommend_list');
 
     fetch(`https://api.themoviedb.org/3/${type}/${id}/recommendations?api_key=3ac9e9c4b5b41ada30de1c0b1e488050&language=ru&page=1`)
@@ -330,13 +332,14 @@ function getRecommend(type, id) {
 
         .then(output => {
             console.log(output);
+            recommend.innerHTML += '<h2 class="col-12"><span>Рекомендуем</span> к просмотру:</h2>';
             for (let i = 0; i < 4; i++) {
                 console.log(output.results[i].poster_path);
                 let nameItem = output.results[i].name || output.results[i].title;
 
                 let poster = output.results[i].poster_path ? urlPoster + output.results[i].poster_path : 'https://kinomaiak.ru/wp-content/uploads/2018/02/noposter.png';
 
-                let dataInfo = `data-id="${output.results[i].id}" data-type = "${output.results[i].media_type}"`;
+                let dataInfo = `data-id="${output.results[i].id}" data-type = "${type}"`;
 
                 recommend.innerHTML += `
                     <div class="col-lg-3 col-md-6 col-sm-6 col-xs-12 movie_item">
@@ -346,11 +349,12 @@ function getRecommend(type, id) {
                         </div>
                     </div>
                 `;
+                addEventMedia();
             }
         })
         .catch(reason => {
-            recommend.innerHTML = `Видео отсутствует!`;
+            recommend.innerHTML = '';
             console.error('error: ' + reason.status);
         })
     ;
-}
+};

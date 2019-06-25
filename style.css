@@ -31,14 +31,14 @@ body {
     width: 100px;
     height: 100px;
     border-radius: 50%;
-    border: 10px dashed rgb(255, 190, 0, 0.3);
-    border-right-color: rgb(255, 190, 0, 0.6);
-    border-bottom-color: rgb(255, 190, 0, 1);
+    border: 10px dashed rgba(255, 190, 0, 0.3);
+    border-right-color: rgba(255, 190, 0, 0.6);
+    border-bottom-color: rgba(255, 190, 0, 1);
     border-left-color: transparent;
     animation: spin 800ms infinite linear;
 }
 .jumbotron {
-    background-color: rgba(255, 193, 7, 0.62);
+    background-color: #c39402cf;
     border-radius: 0;
     margin-bottom: 3em;
 }
@@ -65,18 +65,31 @@ h3 span {
     box-shadow: none;
     color: rgba(255, 255, 255, 0.67);
 }
-.form-control::placeholder,
-.form-control:-ms-input-placeholder,
-.form-control::-ms-input-placeholder {
-    color: #fff;
-    opacity: 1;
+.form-control::-webkit-input-placeholder {
+    color: rgba(255, 255, 255, 0.67);
+}
+.form-control::-moz-placeholder {
+    color: rgba(255, 255, 255, 0.67);
+}
+.form-control:-ms-input-placeholder {
+    color: rgba(255, 255, 255, 0.67);
+}
+.form-control:-moz-placeholder {
+    color: rgba(255, 255, 255, 0.67);
 }
 h1 {
     color: rgba(255, 255, 255);
     margin-bottom: 40px;
 }
 h1 span {
-    color: #daa300;
+    color: #ffbf00;
+}
+h2 {
+    color: rgba(255, 255, 255);
+    margin-bottom: 40px;
+}
+h2 span {
+    color: #ffbf00;
 }
 #movies.hidden {
     display: none;
@@ -100,7 +113,7 @@ img {
     font-size: 24px;
     padding: 20px 0 10px 0;
     line-height: 1.2;
-    color: #daa300;
+    color: #ffbf00;
 }
 .desc {
     color: rgba(255, 255, 255, 0.67);
@@ -141,14 +154,14 @@ img {
     background: rgb(243, 33, 33);
 }
 .vote span.date {
-    color: #daa300;
+    color: #ffbf00;
     font-size: 18px;
     font-weight: 600;
     text-align: right;
     padding-right: 10px;
 }
 .error {
-    color: #daa300;
+    color: #ffbf00;
     font-size: 24px;
     width: 100%;
     text-align: center;
@@ -207,13 +220,13 @@ img {
     color: rgba(105, 194, 0, 1);
 }
 #movie_page .vote span.middle {
-    color: #daa300;
+    color: #ffbf00;
 }
 #movie_page .vote span.bad {
     color: rgb(243, 33, 33);
 }
 #movie_page .video {
-    margin-bottom: 5em;
+    margin-bottom: 4em;
 }
 .full_desc {
     background: rgba(255, 255, 255, 0.2);
@@ -234,7 +247,7 @@ img {
     padding: 25px 0;
     font-size: 22px;
     height: 80px;
-    color: #e6ab00;
+    color: #ffbf00;
     border-bottom: 2px dashed #e6ab001f;
 }
 .overview {
@@ -249,7 +262,7 @@ img {
     position: fixed;
     left: 0;
     top: 34%;
-    background: rgba(166, 127, 12, 0.67);
+    background: #daa400c4;
     width: 70px;
     height: 55px;
     text-align: center;
@@ -280,4 +293,22 @@ img {
     bottom: 0;
     margin: auto;
     transform: rotate(180deg);
+}
+.recommend_list .movie_item .title {
+    font-size: 18px;
+    position: absolute;
+    bottom: 15px;
+    left: 15px;
+    width: calc(100% - 30px);
+    padding: 10px;
+    background: #c39402cf;
+    color: #000000;
+    height: 100px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+ }
+.recommend_list .movie_item img {
+    height: 100%;
 }
