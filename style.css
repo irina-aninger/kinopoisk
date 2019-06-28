@@ -38,7 +38,7 @@ body {
     animation: spin 800ms infinite linear;
 }
 .jumbotron {
-    background-color: #c39402cf;
+    background-color: #ffc100cf;
     border-radius: 0;
     margin-bottom: 3em;
 }
@@ -102,6 +102,10 @@ h2 span {
     background: rgba(255, 255, 255, 0.2);
     height: 100%;
     position: relative;
+    transition: .3s;
+}
+.movie_box:hover {
+    transform: scale(1.05);
 }
 img {
     width: 100%;
@@ -110,7 +114,7 @@ img {
 }
 .title {
     font-weight: bold;
-    font-size: 24px;
+    font-size: 22px;
     padding: 20px 0 10px 0;
     line-height: 1.2;
     color: #ffbf00;
@@ -145,10 +149,10 @@ img {
     border-radius: 0;
 }
 .vote span.good {
-    background: rgb(105, 194, 0)
+    background: rgb(138, 223, 0);
 }
 .vote span.middle {
-    background: rgb(218, 163, 0);
+    background: rgb(255, 191, 3);
 }
 .vote span.bad {
     background: rgb(243, 33, 33);
@@ -187,7 +191,7 @@ img {
     margin-bottom: 0.5em;
 }
 #movie_page .orig_name {
-    color: #e6ab00;
+    color: #ffbe00;
     text-transform: uppercase;
     font-weight: bold;
 }
@@ -217,10 +221,10 @@ img {
     background: none;
 }
 #movie_page .vote span.good {
-    color: rgba(105, 194, 0, 1);
+    color: rgb(138, 223, 0);
 }
 #movie_page .vote span.middle {
-    color: #ffbf00;
+    color: rgb(255, 191, 3);
 }
 #movie_page .vote span.bad {
     color: rgb(243, 33, 33);
@@ -261,8 +265,8 @@ img {
 #to_back {
     position: fixed;
     left: 0;
-    top: 34%;
-    background: #daa400c4;
+    top: 25.1%;
+    background: #ffffffc4;
     width: 70px;
     height: 55px;
     text-align: center;
@@ -301,7 +305,7 @@ img {
     left: 15px;
     width: calc(100% - 30px);
     padding: 10px;
-    background: #c39402cf;
+    background: #ffffffba;
     color: #000000;
     height: 100px;
     display: flex;

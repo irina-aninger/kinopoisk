@@ -2,7 +2,7 @@ const searchForm = document.querySelector('#search-form'),
     movie = document.querySelector('#movies'),
     moviePage = document.querySelector('#movie_page'),
     urlPoster = 'https://image.tmdb.org/t/p/w500',
-    backMain = '<div id="to_back"><a href="./index.html"></a></div>';
+    backMain = '<div id="to_back"><a href="/movies/"></a></div>';
 
 const apiSearch = event => {
     event.preventDefault();
@@ -84,6 +84,7 @@ function addEventMedia() {
         elem.style.cursor = 'pointer';
         elem.addEventListener('click', showFullInfo);
     });
+    document.body.scrollTop = document.documentElement.scrollTop = 0;
 }
 
 function showFullInfo() {
@@ -174,6 +175,7 @@ function showFullInfo() {
             function closePage() {
                 moviePage.classList.remove('active');
                 movie.classList.remove('hidden');
+                document.body.scrollTop = document.documentElement.scrollTop = 0;
             }
 
             backBtnClick.addEventListener('click', closePage);
